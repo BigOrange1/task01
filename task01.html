@@ -24,14 +24,21 @@
 	}
 	var hander = function() {
 		var num = parseInt($("aqi-input").value)
-		if(!isNaN(num)&&(num >= 0)&&(num <= 1000)) {
+		if((!isNaN(num))&&(num >= 0)&&(num <= 1000)) {
 			$("aqi-display").innerHTML = num
 		} else {
-			alert('$("aqi-input").value + "不是有效的值"')
+			alert($("aqi-input").value + "不是有效的值")
 		}
 	}
-	$("button").addEventListener('click', hander())
 
+	$("button").addEventListener('click', hander) //错误hander（）
+	$("aqi-input").onkeyup = function(event) {
+		if(event.keyCode == 13){
+			hander()
+		}
+	}
+
+	 
 	})();
 </script>
 </body>
